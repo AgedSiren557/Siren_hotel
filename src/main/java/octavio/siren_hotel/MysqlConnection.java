@@ -16,9 +16,7 @@ public class MysqlConnection {
             connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/siren_hotel","root","");
             
-            if(connection == null){
-                new Exception();
-            }
+            
         } catch (Exception e) {
             // TODO: handle exception
         }
