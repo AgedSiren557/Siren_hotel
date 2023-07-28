@@ -1,6 +1,6 @@
 package octavio.siren_hotel;
 
-import java.sql.Connection;
+// import java.sql.Connection;
 import java.util.Scanner;
 
 import org.springframework.boot.SpringApplication;
@@ -19,7 +19,7 @@ public class SirenHotelApplication {
 		System.out.println("4.-Update a hotel");
 		System.out.println("5.-Delete a hotel");
 		System.out.println("6.-Exit");
-		System.out.println("\t> ");
+		System.out.print("\t> ");
 	}
 
 	public static void menuAction(Scanner sc){
@@ -29,11 +29,11 @@ public class SirenHotelApplication {
 			option = Integer.valueOf( sc.nextLine() );
 			switch (option) {
 				case 1:
-					
+					HotelService.createHotel();
 					break;
 				
 				case 2:
-					
+					HotelService.showHotels();
 					break;
 				
 				case 3:

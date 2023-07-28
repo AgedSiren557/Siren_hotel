@@ -2,6 +2,7 @@ package octavio.siren_hotel;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class HotelDAO {
@@ -26,8 +27,20 @@ public class HotelDAO {
         }
     }
 
-    public static void showHotelsDB() {
+    public static ResultSet showHotelsDB() {
+        Connection connection = MysqlConnection.get_connection();
+        PreparedStatement ps = null;
+        ResultSet result= null;
+        try {
+            String query =
+                    "SELECT * FROM hotel";
+            ps = connection.prepareStatement(query);
+            result = ps.executeQuery();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
 
+        return result;
     }
 
     public static void deleteHotelDB(int hotel_id) {

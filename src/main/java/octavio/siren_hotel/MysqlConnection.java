@@ -10,7 +10,7 @@ public class MysqlConnection {
     MysqlConnection(){}
 
     public static Connection get_connection(){
-        if(connection != null){
+        if(connection == null){
             try {
                 //configuracion predeterminada para ambiente local y Xampp
                 connection = DriverManager.getConnection(
