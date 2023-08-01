@@ -41,11 +41,11 @@ public class SirenHotelApplication {
 					break;
 				
 				case 4:
-					
+					HotelService.updateHotel();
 					break;
 				
 				case 5:
-					
+					HotelService.deleteHotel();
 					break;
 				
 				case 6:

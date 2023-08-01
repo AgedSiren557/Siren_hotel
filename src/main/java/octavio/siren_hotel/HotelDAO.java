@@ -44,10 +44,39 @@ public class HotelDAO {
     }
 
     public static void deleteHotelDB(int hotel_id) {
+        Connection connection = MysqlConnection.get_connection();
+        PreparedStatement ps = null;
 
+        try {
+            String query =
+                    "DELETE FROM hotel WHERE hotel_id = ?";
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, hotel_id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 
     public static void updateHotelDB(Hotel hotel) {
-
+        Connection connection = MysqlConnection.get_connection();
+        PreparedStatement ps = null;
+        try {
+            String query =
+                    "UPDATE hotel SET state = ?,  city = ?, direction = ?,"+
+                    " size = ?, number_of_rooms = ?, postal_code = ?" +
+                    " WHERE hotel_id = ?";
+            ps = connection.prepareStatement(query);
+            ps.setString(1, hotel.getState());
+            ps.setString(2, hotel.getCity());
+            ps.setString(3, hotel.getDirection());
+            ps.setString(4, hotel.getSize());
+            ps.setInt(5, hotel.getNumberOfRooms());
+            ps.setInt(6, hotel.getPostal_code());
+            ps.setInt(7, hotel.getHotel_id());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 }
